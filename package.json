@@ -1,0 +1,9 @@
+{
+  "type": "module",
+  "dependencies": {
+    "vitest": "^0.18.1"
+  },
+  "devDependencies": {
+    "c8": "^7.12.0"
+  }
+}

@@ -1,4 +1,4 @@
-function sum(x) {
+export function sum(x) {
   if (x === undefined) {
     return 0;
   }
@@ -14,3 +14,4 @@ function sum(x) {
   }
   return f;
 }
+

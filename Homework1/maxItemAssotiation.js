@@ -1,4 +1,4 @@
-function maxItemAssociation(shoppingList) {
+export function maxItemAssociation(shoppingList) {
   // создадим мапу со связями для каждого товара из списков
   const itemLinks = new Map();
 
@@ -18,16 +18,11 @@ function maxItemAssociation(shoppingList) {
   // для каждого списка покупок получим группу рекомендаций (сет, состоящий из связанных товаров для каждого товара из текущего списка)
   let recommendations = [];
   shoppingList.forEach((singleList) => {
-    let first = true;
+    let currentRecomendation = new Set();
     singleList.forEach((item) => {
-      let currentRecomendation = itemLinks.get(item);
-      if (first) {
-        recommendations.push(currentRecomendation);
-        first = false;
-      } else {
-        itemLinks.get(item).forEach((link) => currentRecomendation.add(link));
-      }
+      itemLinks.get(item).forEach((link) => currentRecomendation.add(link));
     });
+    recommendations.push(currentRecomendation);
   });
 
   //отсортируем и вернем результат
@@ -40,13 +35,5 @@ function maxItemAssociation(shoppingList) {
           : 1
         : b.length - a.length;
     });
-
-  console.log(recommendations);
   return recommendations[0];
 }
-
-maxItemAssociation([
-  ["d", "c"],
-  ["c", "b"],
-  ["b", "a"],
-]);
