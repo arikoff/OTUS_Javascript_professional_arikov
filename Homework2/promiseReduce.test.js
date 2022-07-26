@@ -25,11 +25,5 @@ var reduce = function (memo, value) {
 };
 
 test("test1", () => {
-  return promiseReduce([fn1, fn2, fn3], reduce, 1).then((result) => {
-    expect(result).toBe(6);
-  });
-});
-
-test("test2", () => {
   expect(promiseReduce([fn1, fn2, fn3], reduce, 1)).resolves.toBe(6);
 });
